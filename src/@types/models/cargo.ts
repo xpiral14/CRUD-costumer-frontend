@@ -1,3 +1,4 @@
 export default interface Cargo {
-  cargo: string;
+  id: number;
+  descricao: string;
 }
