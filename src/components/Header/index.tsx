@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
+import { Container } from "./styles";
 
 export const Header = () => {
-    return (
-        <div>
-            Eu sou o header
-        </div>
-    )
-}
+
+  return <Container>Eu sou o header</Container>;
+};
