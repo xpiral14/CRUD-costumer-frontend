@@ -120,12 +120,25 @@ Os passos para execução deste exige duas especificações:
     ```bash
         npm run dev
     ```
-6. caso esteja tudo certo, será imprimido as seguintes mensagens em seu console:
+6. Caso esteja tudo certo, uma espécie de sincronização das tabelas com o banco irá acontecere e a última mensagem deverá ser algo como:
     ```bash
-    Banco de dados conectado com sucesso
     Servidor iniciou na porta <SUA_PORTA>
     ```
-
+7. Após a mensagem aparecer, vá no arquivo localizado em `src/Main.ts` e comente a linha 13: 
+    ```ts
+    11 // Sincroniza as tabelas da aplicação com o banco de dados.
+    12 //RODE APENAS UMA UNICA VEZ
+    13 await database.getConnection().sync({ force: true });
+    ```
+8. Espere o servidor reiniciar (acontecerá automaticamente), ou pare o servidor atual e rode novamente o comando: 
+   ```bash
+        yarn dev
+    ```
+    ou
+    ```bash
+        npm run dev
+    ```
+    
 ### End Points
 - Cargos
     ``` bash
