@@ -19,7 +19,6 @@ const InformacaoFuncionarioPage: React.FC<InformacaoFuncionarioPageProps> = (
   const [funcionario, setFuncionario] = useState<Funcionario>();
 
   useEffect(() => {
-    console.log("entrei aqui");
     async function getFuncionario() {
       try {
         const response = await ApiPoints.getFuncionarioById(
