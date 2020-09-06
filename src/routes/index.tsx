@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 import Route from "./Route";
-import Home from "../pages/home";
+import Home from "../pages/inicio";
 import CargosPage from "../pages/cargo";
 import InformacaoCargoPage from "../pages/cargo/informacoes";
 import CadastroCargoPage from "../pages/cargo/cadastro";
