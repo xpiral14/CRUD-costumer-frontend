@@ -1,9 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Input from "../Input";
 import Funcionario from "../../@types/models/funcionario";
-import { useSelector } from "react-redux";
 import Select from "../Select";
 import { Container } from "./styles";
+import Cargo from "../../@types/models/cargo";
+import { ApiPoints } from "../../api";
 
 interface CargoFormProps {
   funcionario?: Funcionario;
@@ -19,10 +20,22 @@ const FuncionarioForm: React.FC<CargoFormProps> = ({
   funcionario,
   inputRefs,
 }) => {
-  const cargos = useSelector((s) => s.cargos);
+  const [cargos, setCargos] = useState<Cargo[]>();
 
+  useEffect(() => {
+    async function getCargos() {
+      try {
+        const response = await ApiPoints.getCargos();
+
+        setCargos(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getCargos();
+  }, []);
   const cargosOption = useMemo(
-    () => cargos.map((cargo) => ({ value: cargo.id, label: cargo.descricao })),
+    () => cargos?.map((cargo) => ({ value: cargo.id, label: cargo.descricao })),
     [cargos]
   );
   return (
@@ -52,20 +65,22 @@ const FuncionarioForm: React.FC<CargoFormProps> = ({
         required
       />
       <label htmlFor="cargo">Cargo</label>
-      <Select
-        id="cargo"
-        name="cargoId"
-        defaultValue={funcionario?.cargoId}
-        ref={inputRefs.cargoRef}
-        required
-      >
-        <option value="">Selecionar cargo</option>
-        {cargosOption.map((cargo) => (
-          <option key={cargo.value} value={cargo.value}>
-            {cargo.label}
-          </option>
-        ))}
-      </Select>
+      {cargos?.length && (
+        <Select
+          id="cargo"
+          name="cargoId"
+          ref={inputRefs.cargoRef}
+          defaultValue={funcionario?.cargoId}
+          required
+        >
+          <option value="">Selecionar cargo</option>
+          {cargosOption?.map((cargo) => (
+            <option key={cargo.value} value={cargo.value}>
+              {cargo.label}
+            </option>
+          ))}
+        </Select>
+      )}
 
       <label htmlFor="dataNascimento">Data de nascimento</label>
 
