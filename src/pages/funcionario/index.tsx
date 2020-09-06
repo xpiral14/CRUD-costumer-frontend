@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "./styles";
-import Table from "../../components/Table";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BiTrash } from "react-icons/bi";
+
+import { Container } from "./styles";
+
+import Table from "../../components/Table";
+
 import Funcionario from "../../@types/models/funcionario";
+
 import { ApiPoints } from "../../api";
+
 import { useToast } from "../../hooks/toast";
 
 interface FuncionarioPageProps

@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "./styles";
 import { RouteComponentProps } from "react-router-dom";
 import { useForm } from "react-hook-form";
+
+import { Container } from "./styles";
+
 import Button from "../../../components/Button";
 import FuncionarioForm from "../../../components/FuncionarioForm";
+
 import Funcionario from "../../../@types/models/funcionario";
 import { FuncionarioFormData } from "../@types";
+
 import { ApiPoints } from "../../../api";
+
 import { useToast } from "../../../hooks/toast";
 
 interface InformacaoFuncionarioPageProps
