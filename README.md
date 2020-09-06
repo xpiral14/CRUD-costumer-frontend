@@ -69,11 +69,13 @@ Os passos para execução deste exige duas especificações:
 2. Entre no diretório recém clonado e instale as dependências do projeto com seu gerenciador de pacotes e espere terminar:
 
     ```bash
-    cd teste-3lm-backend & yarn
+    cd teste-3lm-backend 
+    yarn
     ```
     ou 
      ```bash
-    cd teste-3lm-backend & npm install
+    cd teste-3lm-backend
+    npm install
     ```
 3. Após o término, renomeie o arquivo na pasta raíz `.example.env` para `.env`
 
@@ -170,11 +172,13 @@ ___
 2. Entre no diretório recém clonado e instale as dependências do projeto com seu gerenciador de pacotes:
 
     ```bash
-    cd teste-3lm-frontend & yarn
+    cd teste-3lm-frontend 
+    yarn
     ```
     ou 
      ```bash
-    cd teste-3lm-frontend & npm install
+    cd teste-3lm-frontend 
+    npm install
     ```
 
 4. Entre no arquivo localizado em `src/api/index.ts` e modifique a constante `API_BASE_URL` para  a url do backend configurado.
