@@ -1,42 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "./styles";
 import CargoForm from "../../../components/CargoForm";
 import { RouteComponentProps } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import Cargo from "../../../@types/models/cargo";
 import { useForm } from "react-hook-form";
 import Button from "../../../components/Button";
-import { updateCargo } from "../../../store/cargo/actions";
 import { CargoFormData } from "../@types";
+import { ApiPoints } from "../../../api";
+import { useToast } from "../../../hooks/toast";
 
 interface InformacaoCargoPageProps
   extends RouteComponentProps<any>,
     React.Props<any> {}
 
-
-
 const InformacaoCargoPage: React.FC<InformacaoCargoPageProps> = (props) => {
-  // obtém o cargo do estado atual
-  const cargo = useSelector((s) =>
-    s.cargos.find((cargo) => cargo.id === +props.match.params.id)
-  ) as Cargo;
+  const [cargo, setCargo] = useState<Cargo>();
+
+  useEffect(() => {
+    async function getCargo() {
+      try {
+        const response = await ApiPoints.getCargoById(props.match.params.id);
+
+        if (!response.data) return props.history.push("/cargos");
+
+        setCargo(response.data);
+      } catch (error) {
+        props.history.push("/cargos");
+      }
+    }
+
+    getCargo();
+  }, [props.match.params.id, props.history]);
 
   const { register, handleSubmit } = useForm<CargoFormData>();
-  const dispatch = useDispatch();
-  const onSubmit = (data: CargoFormData) => {
-    dispatch(updateCargo(cargo.id, data.descricao));
-    props.history.push("/cargos")
+  const { addToast } = useToast();
+  const onSubmit = async (data: CargoFormData) => {
+    await ApiPoints.updateCargo(cargo?.id as number, data);
+    addToast({
+      type: "success",
+      title: "Sucesso!",
+      description: `Cargo atualizado com successo`,
+    });
+    props.history.push("/cargos");
   };
 
   return (
     <Container>
       <h2>Informações sobre o cargo {cargo?.descricao}</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <CargoForm inputRefs={{ descricaoRef: register }} cargo={cargo} />
-        <Button type="submit" btnTheme="success">
-          Salvar
-        </Button>
-      </form>
+      {!cargo ? (
+        <h3>Carregando</h3>
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <CargoForm inputRefs={{ descricaoRef: register }} cargo={cargo} />
+          <Button type="submit" btnTheme="success">
+            Salvar
+          </Button>
+        </form>
+      )}
     </Container>
   );
 };

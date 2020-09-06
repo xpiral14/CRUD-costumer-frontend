@@ -1,13 +1,12 @@
 import React from "react";
 import { Container } from "./styles";
 import { RouteComponentProps } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import Cargo from "../../../@types/models/cargo";
 import { useForm } from "react-hook-form";
 import Button from "../../../components/Button";
 import FuncionarioForm from "../../../components/FuncionarioForm";
-import { createFuncionario } from "../../../store/funcionario/actions";
 import { FuncionarioFormData } from "../@types";
+import { ApiPoints } from "../../../api";
+import { useToast } from "../../../hooks/toast";
 
 interface InformacaoCargoPageProps
   extends RouteComponentProps<any>,
@@ -15,21 +14,36 @@ interface InformacaoCargoPageProps
 
 const CadastroFuncionarioPage: React.FC<InformacaoCargoPageProps> = (props) => {
   // obtém o cargo do estado atual
-  const cargo = useSelector((s) =>
-    s.cargos.find((cargo) => cargo.id === +props.match.params.id)
-  ) as Cargo;
 
   const { register, handleSubmit } = useForm<FuncionarioFormData>();
-  const dispatch = useDispatch();
-  const onSubmit = (data: FuncionarioFormData) => {
+
+  const { addToast } = useToast();
+  const onSubmit = async (data: FuncionarioFormData) => {
     data.cargoId = +data.cargoId;
-    dispatch(createFuncionario(data));
-    props.history.push("/funcionarios");
+
+    try {
+      await ApiPoints.createFuncionario(data);
+
+      addToast({
+        type: "success",
+        title: "Sucesso!",
+        description: "Funcionário criado com sucesso!",
+      });
+
+      props.history.push("/funcionarios");
+      
+    } catch (error) {
+      addToast({
+        type: "error",
+        title: "Erro!",
+        description: error.response.data,
+      });
+    }
   };
 
   return (
     <Container>
-      <h2>Informações sobre o cargo {cargo?.descricao}</h2>
+      <h2>Cadastro de funcionario</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FuncionarioForm
           inputRefs={{

@@ -5,6 +5,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     a {
+      text-decoration: none;
       padding: 16px;
       background-color: #15ca20;
       color: white;

@@ -1,34 +1,57 @@
-import React, { useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "./styles";
-import { useSelector, useDispatch } from "react-redux";
 import Table from "../../components/Table";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BiTrash } from "react-icons/bi";
-import { deleteFuncionario } from "../../store/funcionario/actions";
+import Funcionario from "../../@types/models/funcionario";
+import { ApiPoints } from "../../api";
+import { useToast } from "../../hooks/toast";
 
 interface FuncionarioPageProps
   extends RouteComponentProps<any>,
     React.Props<any> {}
 
 const FuncionarioPage: React.FC<FuncionarioPageProps> = () => {
-  const funcionarios = useSelector((s) => s.funcionarios);
+  const [funcionarios, setFuncionarios] = useState<Funcionario[]>();
 
-  const cargos = useSelector((s) => s.cargos);
-  const funcionariosCargo = useMemo(
-    () =>
-      funcionarios.map((funcionario) => ({
-        ...funcionario,
-        cargo: cargos.find((cargo) => cargo.id === funcionario.cargoId),
-      })),
-    [cargos, funcionarios]
-  );
+  const { addToast } = useToast();
+  useEffect(() => {
+    async function getFuncionarios() {
+      try {
+        const response = await ApiPoints.getFuncionarios();
 
-  const dispatch = useDispatch();
+        setFuncionarios(response.data);
+      } catch (error) {
+        addToast({
+          type: "error",
+          title: "Erro!",
+          description: error.response.data.error,
+        });
+      }
+    }
+    getFuncionarios();
+  }, [addToast]);
 
-  const confirmarDelecaoCargo = (funcionarioId: number) => {
-    if (window.confirm("Você tem certeza que deseja deletar esse funcionario ?")) {
-      dispatch(deleteFuncionario(funcionarioId));
+  const confirmarDelecaoCargo = async (funcionarioId: number) => {
+    if (
+      window.confirm("Você tem certeza que deseja deletar esse funcionario ?")
+    ) {
+      try {
+        await ApiPoints.deleteFuncionario(funcionarioId);
+
+        setFuncionarios((funcionarios) =>
+          funcionarios?.filter(
+            (funcionario) => funcionario.id !== funcionarioId
+          )
+        );
+      } catch (error) {
+        addToast({
+          title: "Erro!",
+          description: error.response.data.error,
+          type: "error",
+        });
+      }
     }
   };
 
@@ -38,7 +61,7 @@ const FuncionarioPage: React.FC<FuncionarioPageProps> = () => {
         <h1>Vizualização dos funcionarios cadastrados</h1>
         <Link to="/funcionarios/cadastro">Cadastrar novo funcionario</Link>
       </div>
-      {!funcionarios ? (
+      {!funcionarios?.length ? (
         <span>Ainda não possui funcionarios cadastrados</span>
       ) : (
         <Table>
@@ -51,7 +74,7 @@ const FuncionarioPage: React.FC<FuncionarioPageProps> = () => {
             </tr>
           </thead>
           <tbody>
-            {funcionariosCargo.map((funcionario) => (
+            {funcionarios.map((funcionario) => (
               <tr key={funcionario.id}>
                 <td>{funcionario.nome}</td>
                 <td>{funcionario.sobrenome}</td>

@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "./styles";
-import { useSelector, useDispatch } from "react-redux";
 import Table from "../../components/Table";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BiTrash } from "react-icons/bi";
-import { deleteCargo } from "../../store/cargo/actions";
+import Cargo from "../../@types/models/cargo";
+import { ApiPoints } from "../../api";
 
 interface CargoPageProps extends RouteComponentProps<any>, React.Props<any> {}
 
 const CargosPage: React.FC<CargoPageProps> = () => {
-  
-  const cargos = useSelector((s) => s.cargos);
-  const dispatch = useDispatch();
+  const [cargos, setCargos] = useState<Cargo[]>([]);
 
-  const confirmarDelecaoCargo = (cargoId: number) => {
+  useEffect(() => {
+    async function getCargos() {
+      const response = await ApiPoints.getCargos();
+
+      setCargos(response.data);
+    }
+    getCargos();
+  }, []);
+
+  const confirmarDelecaoCargo = async (cargoId: number) => {
     if (window.confirm("Você tem certeza que deseja deletar o cargo ?")) {
-      dispatch(deleteCargo(cargoId));
+      try {
+        await ApiPoints.deleteCargo(cargoId);
+        setCargos((cargos) => cargos.filter((c) => c.id !== cargoId));
+      } catch (error) {
+        console.log(error.response.data);
+      }
     }
   };
 
@@ -26,7 +38,7 @@ const CargosPage: React.FC<CargoPageProps> = () => {
         <h1>Vizualização dos cargos cadastrados</h1>
         <Link to="/cargos/cadastro">Cadastrar novo cargo</Link>
       </div>
-      {!cargos ? (
+      {!cargos.length ? (
         <span>Ainda não possui cargos cadastrados</span>
       ) : (
         <Table>
