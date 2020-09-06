@@ -162,7 +162,7 @@ Os passos para execução deste exige duas especificações:
 '   ```
 ___
 ## Frontend
-
+É importante salientar que para o frontend funcionar bem, o servidor configurado no passo anterior deve estar rodando.
 1. Clone o repositório para o seu sistema operacional:
 
     ```bash
