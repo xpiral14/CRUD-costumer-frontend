@@ -1,9 +1,13 @@
 import React, { useMemo } from "react";
-import Input from "../Input";
-import Funcionario from "../../@types/models/funcionario";
 import { useSelector } from "react-redux";
-import Select from "../Select";
+
 import { Container } from "./styles";
+
+import Input from "../Input";
+import Select from "../Select";
+
+import Funcionario from "../../@types/models/funcionario";
+
 
 interface CargoFormProps {
   funcionario?: Funcionario;

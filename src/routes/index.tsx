@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 import Route from "./Route";
-import Home from "../pages/Home";
-import CargosPage from "../pages/cargos";
-import InformacaoCargoPage from "../pages/cargos/informacoes";
-import CadastroCargoPage from "../pages/cargos/cadastro";
-import FuncionarioPage from "../pages/funcionarios";
-import CadastroFuncionarioPage from "../pages/funcionarios/cadastro";
-import InformacaoFuncionarioPage from "../pages/funcionarios/informacoes";
+import Home from "../pages/inicio";
+import CargosPage from "../pages/cargo";
+import InformacaoCargoPage from "../pages/cargo/informacoes";
+import CadastroCargoPage from "../pages/cargo/cadastro";
+import FuncionarioPage from "../pages/funcionario";
+import CadastroFuncionarioPage from "../pages/funcionario/cadastro";
+import InformacaoFuncionarioPage from "../pages/funcionario/informacoes";
 
 const Routes = () => {
   return (

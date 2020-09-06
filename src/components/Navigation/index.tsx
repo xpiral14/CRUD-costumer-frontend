@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { GiFamilyTree } from "react-icons/gi";
+import { MdGroup } from "react-icons/md";
+
 import {
   Container,
   LogoContainer,
@@ -6,10 +10,9 @@ import {
   IconMenuItem,
   IconMenuText,
 } from "./styles";
+
 import logo from "../../assets/3lmlogo.png";
-import { Link } from "react-router-dom";
-import { GiFamilyTree } from "react-icons/gi";
-import { MdGroup } from "react-icons/md";
+
 export const Navigation = () => {
   const [activeMenuItem, setActiveMenuItem] = useState<string | null>(null);
   return (

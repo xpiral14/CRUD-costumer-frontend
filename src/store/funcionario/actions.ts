@@ -1,5 +1,5 @@
 import ActionsFuncionario from "../../@types/redux/funcionario/actions";
-import { FuncionarioFormData } from "../../pages/funcionarios/@types";
+import { FuncionarioFormData } from "../../pages/funcionario/@types";
 
 export function createFuncionario(funcionarioFormData: FuncionarioFormData) {
   return {

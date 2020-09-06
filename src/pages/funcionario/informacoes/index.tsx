@@ -1,18 +1,21 @@
 import React from "react";
-import { Container } from "./styles";
 import { RouteComponentProps } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+
+import { Container } from "./styles";
+
+import { FuncionarioFormData } from "../@types";
+
 import Button from "../../../components/Button";
 import FuncionarioForm from "../../../components/FuncionarioForm";
+
 import Funcionario from "../../../@types/models/funcionario";
-import { FuncionarioFormData } from "../@types";
 import { updateFuncionario } from "../../../store/funcionario/actions";
 
 interface InformacaoFuncionarioPageProps
   extends RouteComponentProps<any>,
     React.Props<any> {}
-
 
 const InformacaoFuncionarioPage: React.FC<InformacaoFuncionarioPageProps> = (
   props
@@ -24,10 +27,10 @@ const InformacaoFuncionarioPage: React.FC<InformacaoFuncionarioPageProps> = (
     )
   ) as Funcionario;
 
-  const { register, handleSubmit} = useForm<FuncionarioFormData>();
+  const { register, handleSubmit } = useForm<FuncionarioFormData>();
   const dispatch = useDispatch();
   const onSubmit = (data: FuncionarioFormData) => {
-     dispatch(updateFuncionario(funcionario.id, data));
+    dispatch(updateFuncionario(funcionario.id, data));
     props.history.push("/funcionarios");
   };
   return (

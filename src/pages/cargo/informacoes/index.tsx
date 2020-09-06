@@ -1,13 +1,18 @@
 import React from "react";
-import { Container } from "./styles";
-import CargoForm from "../../../components/CargoForm";
+import { useForm } from "react-hook-form";
 import { RouteComponentProps } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Cargo from "../../../@types/models/cargo";
-import { useForm } from "react-hook-form";
-import Button from "../../../components/Button";
-import { updateCargo } from "../../../store/cargo/actions";
+
+import { Container } from "./styles";
+
 import { CargoFormData } from "../@types";
+
+import CargoForm from "../../../components/CargoForm";
+import Button from "../../../components/Button";
+
+import { updateCargo } from "../../../store/cargo/actions";
+
+import Cargo from "../../../@types/models/cargo";
 
 interface InformacaoCargoPageProps
   extends RouteComponentProps<any>,

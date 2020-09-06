@@ -1,11 +1,15 @@
 import React from "react";
-import { Container } from "./styles";
-import CargoForm from "../../../components/CargoForm";
-import { RouteComponentProps } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import Button from "../../../components/Button";
+import { useDispatch } from "react-redux";
+import { RouteComponentProps } from "react-router-dom";
+
+import { Container } from "./styles";
+
+import CargoForm from "../../../components/CargoForm";
+
 import { createCargo } from "../../../store/cargo/actions";
+
+import Button from "../../../components/Button";
 
 interface InformacaoCargoPageProps
   extends RouteComponentProps<any>,

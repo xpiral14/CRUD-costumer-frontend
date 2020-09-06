@@ -1,10 +1,13 @@
 import React from "react";
-import { Container } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
-import Table from "../../components/Table";
-import { Link, RouteComponentProps } from "react-router-dom";
-import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BiTrash } from "react-icons/bi";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { Link, RouteComponentProps } from "react-router-dom";
+
+import { Container } from "./styles";
+
+import Table from "../../components/Table";
+
 import { deleteCargo } from "../../store/cargo/actions";
 
 interface CargoPageProps extends RouteComponentProps<any>, React.Props<any> {}
