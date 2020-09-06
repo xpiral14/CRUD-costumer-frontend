@@ -1,44 +1,183 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TESTE 3LM
+### Sobre o desenvolvimento
+### Bibliotecas utilizadas
+- React
+- React-router-dom
+- Styled-componentes
+- polished 
+- react-spring
+- react-icons
+- uuidv4
+- redux
+- react-redux
+- axios
 
-## Available Scripts
+O teste foi desenvolvido em duas versões: [**v1.0**](https://github.com/xpiral14/teste-3lm-frontend/tree/v1.0) e [**v2.0**](https://github.com/xpiral14/teste-3lm-frontend/tree/v2.0). A **v1.0** consiste em mostrar como eu consigo lidar com a biblioteca de gerenciamento de estado `Redux`. O foco é mostrar a iteração entre as páginas esses estados e também uma espécie de relação entre `Funcionário` e `Cargo`;
 
-In the project directory, you can run:
+Já a **v2.0** eu quis mostrar como seria esse teste caso tivesse um backend servindo os dados. Como os dados vem do servidor senti que não havia necessidade de usar o redux por causa que o compartilhamento de estado entre componentes é quase nulo nesse teste.
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Como rodar o sistema
+## [**v1.0**](https://github.com/xpiral14/teste-3lm-frontend/tree/v1.0) - Teste apenas com o redux
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. Clone o repositório para o seu sistema operacional:
 
-### `yarn test`
+    ```bash
+    git clone -b v1.0 https://github.com/xpiral14/teste-3lm-frontend
+    ```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Entre no diretório recém clonado e instale as dependências do projeto com seu gerenciador de pacotes:
 
-### `yarn build`
+    ```bash
+    cd teste-3lm-frontend
+    yarn
+    ```
+    ou 
+     ```bash
+    cd teste-3lm-frontend
+    npm install
+    ```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Rode o comando de execução de desenvolvedor e espere a execução compilar o código.
+    ```bash
+    yarn start
+    ```
+    ou
+    ```bash
+    npm run start
+    ```
+4. Provavelmente o seu navegador padrão irá abrir na url padrão de desenvolvimento react, caso não abra, [clique aqui](http://localhost:3000) para ser redirecionado para esta url.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+5. Pronto! O teste já deve está rodando em seu navegador.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+___
+## [**v2.0**](https://github.com/xpiral14/teste-3lm-frontend/tree/v2.0) - Teste com API REST
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Os passos para execução deste exige duas especificações:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Ter o banco mariaDB instalado em sua máquina ou em um container docker.
+2. Ter o Node JS instalado.
+  
+### Execução do Backend
+1. Clone o repositório para o seu sistema operacional:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    ```bash
+    git clone https://github.com/xpiral14/teste-3lm-backend
+    ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Entre no diretório recém clonado e instale as dependências do projeto com seu gerenciador de pacotes e espere terminar:
 
-## Learn More
+    ```bash
+    cd teste-3lm-backend & yarn
+    ```
+    ou 
+     ```bash
+    cd teste-3lm-backend & npm install
+    ```
+3. Após o término, renomeie o arquivo na pasta raíz `.example.env` para `.env`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Entre nesse arquivo e configure as variáveis de conexão do banco de dados de acordo com o seu sistema.
+    ```markdown
+    #NODE_ENV CONFIG
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    # Ambiente em que o node está rodando.
+    NODE_ENV=development                
+
+
+    #APP CONFIG
+
+    # Porta de execução da aplicação
+    APP_PORT=2004
+
+    # url do sistema (coloque a porta de acordo com a variável de ambiente APP_PORT)
+    APP_URL=http://localhost:1234       
+
+
+    #DATABASE CONFIG
+
+    # Porta em que seu banco MariaDB está rodando
+    DB_PORT= 
+
+    # Nome de usuário do seu banco de dados
+    DB_USER=                        
+
+    # Senha de usuário do seu banco de dados
+    DB_PASS=                   
+
+    # Onde seu banco de dados está hospedado
+    DB_HOST=            
+
+    # Nome da database dentro do seu banco de dados
+    DB_NAME=                                  
+    ```
+5. Agora execute o comando: 
+
+    ```bash
+        yarn dev
+    ```
+    ou
+    ```bash
+        npm run dev
+    ```
+6. caso esteja tudo certo, será imprimido as seguintes mensagens em seu console:
+    ```bash
+    Banco de dados conectado com sucesso
+    Servidor iniciou na porta <SUA_PORTA>
+    ```
+
+### End Points
+- Cargos
+    ``` bash
+    VERBO HTTP      URL            Descrição
+    GET             /cargos        - Obtém cargos
+    GET             /cargos/:id    - Obtém cargo pelo id
+    POST            /cargos        - Cadastra novo cargo
+    PUT             /cargos/:id    - Atualiza cargo
+    DELETE          /cargos/:id    - Deleta cargo
+    ```
+- Funcionários
+    ``` bash
+    VERBO HTTP  URL                Descrição
+    GET         /funcionarios      - Obtém funcionarios
+    GET         /funcionarios/:id  - Obtém funcionario 
+    POST        /funcionarios      - Cadastra funcionario
+    PUT         /funcionarios/:id  - Atualiza funcionario
+    DELETE      /funcionarios/:id  - Deleta funcionario
+'   ```
+___
+## Frontend
+
+1. Clone o repositório para o seu sistema operacional:
+
+    ```bash
+    git clone -b v2.0 https://github.com/xpiral14/teste-3lm-frontend
+    ```
+
+2. Entre no diretório recém clonado e instale as dependências do projeto com seu gerenciador de pacotes:
+
+    ```bash
+    cd teste-3lm-frontend & yarn
+    ```
+    ou 
+     ```bash
+    cd teste-3lm-frontend & npm install
+    ```
+
+4. Entre no arquivo localizado em `src/api/index.ts` e modifique a constante `API_BASE_URL` para  a url do backend configurado.
+     exemplo:
+    ```
+    const API_BASE_URL = "http://localhost:1234"
+    ```
+
+6. Rode o comando de execução de desenvolvedor e espere a execução compilar o código.
+    ```bash
+    yarn start
+    ```
+    ou
+    ```bash
+    npm run start
+    ```
+7. Provavelmente o seu navegador padrão irá abrir na url padrão de desenvolvimento react, caso não abra, [clique aqui](http://localhost:3000) para ser redirecionado para esta url.
+
+8. Pronto! O teste já deve está rodando em seu navegador.
