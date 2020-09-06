@@ -4,7 +4,10 @@ import Funcionario from "../@types/models/funcionario";
 import { CargoFormData } from "../pages/cargos/@types";
 import { FuncionarioFormData } from "../pages/funcionarios/@types";
 
-export const api = Axios.create({ baseURL: "http://localhost:1234" });
+// Mude essa linha para a url da api em seu computador
+const API_BASE_URL = "http://localhost:1234"
+
+export const api = Axios.create({ baseURL: API_BASE_URL });
 
 export class ApiPoints {
   static async getCargos() {
