@@ -1,8 +1,8 @@
 import Axios from "axios";
 import Cargo from "../@types/models/cargo";
 import Funcionario from "../@types/models/funcionario";
-import { CargoFormData } from "../pages/cargos/@types";
-import { FuncionarioFormData } from "../pages/funcionarios/@types";
+import { CargoFormData } from "../pages/cargo/@types";
+import { FuncionarioFormData } from "../pages/funcionario/@types";
 
 // Mude essa linha para a url da api em seu computador
 const API_BASE_URL = "http://localhost:1234"

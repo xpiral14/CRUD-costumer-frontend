@@ -1,10 +1,12 @@
 import React, { useMemo, useState, useEffect } from "react";
-import Input from "../Input";
-import Funcionario from "../../@types/models/funcionario";
-import Select from "../Select";
 import { Container } from "./styles";
-import Cargo from "../../@types/models/cargo";
+
+import Input from "../Input";
+import Select from "../Select";
+
 import { ApiPoints } from "../../api";
+import Funcionario from "../../@types/models/funcionario";
+import Cargo from "../../@types/models/cargo";
 
 interface CargoFormProps {
   funcionario?: Funcionario;

@@ -1,8 +1,10 @@
 import React from "react";
-import { Container } from "./styles";
-import CargoForm from "../../../components/CargoForm";
 import { RouteComponentProps } from "react-router-dom";
 import { useForm } from "react-hook-form";
+
+import { Container } from "./styles";
+
+import CargoForm from "../../../components/CargoForm";
 import Button from "../../../components/Button";
 import { ApiPoints } from "../../../api";
 import { useToast } from "../../../hooks/toast";

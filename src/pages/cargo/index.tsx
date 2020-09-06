@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "./styles";
-import Table from "../../components/Table";
-import { Link, RouteComponentProps } from "react-router-dom";
-import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BiTrash } from "react-icons/bi";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { Link, RouteComponentProps } from "react-router-dom";
+
+import { Container } from "./styles";
+
+import Table from "../../components/Table";
 import Cargo from "../../@types/models/cargo";
 import { ApiPoints } from "../../api";
 
