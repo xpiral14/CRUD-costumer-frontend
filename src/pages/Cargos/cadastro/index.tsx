@@ -2,8 +2,7 @@ import React from "react";
 import { Container } from "./styles";
 import CargoForm from "../../../components/CargoForm";
 import { RouteComponentProps } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import Cargo from "../../../@types/models/cargo";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import Button from "../../../components/Button";
 import { createCargo } from "../../../store/cargo/actions";
@@ -17,10 +16,7 @@ interface CargoFormData {
 }
 
 const CadastroCargoPage: React.FC<InformacaoCargoPageProps> = (props) => {
-  // obtém o cargo do estado atual
-  const cargo = useSelector((s) =>
-    s.cargos.find((cargo) => cargo.id === +props.match.params.id)
-  ) as Cargo;
+
 
   const { register, handleSubmit } = useForm<CargoFormData>();
   const dispatch = useDispatch();
@@ -32,7 +28,7 @@ const CadastroCargoPage: React.FC<InformacaoCargoPageProps> = (props) => {
 
   return (
     <Container>
-      <h2>Informações sobre o cargo {cargo?.descricao}</h2>
+      <h2>Cadastro de cargo </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <CargoForm inputRefs={{ descricaoRef: register }}/>
         <Button type="submit" btnTheme="success">
