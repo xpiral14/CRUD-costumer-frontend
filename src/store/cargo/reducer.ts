@@ -1,5 +1,5 @@
 import Cargo from "../../@types/models/cargo";
-import ActionTypesCargo from "../../@types/redux/cargo/actionTypesCargo";
+import ActionTypesCargo from "../../@types/redux/cargo/actions";
 import generateRandomId from "../../utils/generateRandom";
 
 const initialState: Cargo[] = [

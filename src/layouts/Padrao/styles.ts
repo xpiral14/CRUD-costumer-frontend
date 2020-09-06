@@ -8,6 +8,13 @@ export const Container = styled.main`
     "nv ds ds ds" auto
     "nv ds ds ds" auto
     / 250px auto auto auto;
+  @media only screen and (max-width: 600px) {
+    grid-template:
+      "nv hd hd hd" 60px
+      "nv ds ds ds" auto
+      "nv ds ds ds" auto
+      / 80px auto auto auto;
+  }
 `;
 
 export const Content = styled.section`

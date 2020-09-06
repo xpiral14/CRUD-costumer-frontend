@@ -1,11 +1,12 @@
 {
-  "name": "teste-3ln",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.20.0",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.20.6",
     "history": "^5.0.0",

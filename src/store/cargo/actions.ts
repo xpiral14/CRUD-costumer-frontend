@@ -1,8 +1,8 @@
-import Cargo from "../../@types/models/cargo";
-import ActionTypesCargo from "../../@types/redux/cargo/actionTypesCargo";
+
+import ActionTypesCargo from "../../@types/redux/cargo/actions";
 
 export function createCargo(descricaoCargo: string) {
-  console.log(descricaoCargo)
+
   return {
     type: ActionTypesCargo.CREATE_CARGO,
     payload: {

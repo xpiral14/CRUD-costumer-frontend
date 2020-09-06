@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Cargo from "../../../@types/models/cargo";
 import { useForm } from "react-hook-form";
 import Button from "../../../components/Button";
-import { updateCargo, createCargo } from "../../../store/cargo/actions";
+import { createCargo } from "../../../store/cargo/actions";
 
 interface InformacaoCargoPageProps
   extends RouteComponentProps<any>,

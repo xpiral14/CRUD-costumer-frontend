@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-h1 {
-    margin-bottom: 24px;
-}
-  p {
-    + p {
+  form {
+    margin-top: 24px;
+    width: 100%;
+
+    button {
       margin-top: 24px;
-      line-height: 1.5;
+      float: right;
     }
   }
 `;

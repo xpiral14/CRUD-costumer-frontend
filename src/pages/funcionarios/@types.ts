@@ -1,5 +1,4 @@
-export default interface Funcionario {
-  id:number;
+export interface FuncionarioFormData {
   nome: string;
   sobrenome: string;
   cargoId: number;

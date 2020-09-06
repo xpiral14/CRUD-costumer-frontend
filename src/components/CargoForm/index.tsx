@@ -19,6 +19,8 @@ const CargoForm: React.FC<CargoFormProps> = ({ cargo, inputRefs }) => {
         placeholder="Descrição"
         id="descricao"
         defaultValue={cargo?.descricao}
+        minLength={3}
+        required
       />
     </>
   );

@@ -1,9 +1,17 @@
-import React from "react";
-import { Container, LogoContainer, MenuContainer } from "./styles";
+import React, { useState } from "react";
+import {
+  Container,
+  LogoContainer,
+  MenuContainer,
+  IconMenuItem,
+  IconMenuText,
+} from "./styles";
 import logo from "../../assets/3lmlogo.png";
 import { Link } from "react-router-dom";
-
+import { GiFamilyTree } from "react-icons/gi";
+import { MdGroup } from "react-icons/md";
 export const Navigation = () => {
+  const [activeMenuItem, setActiveMenuItem] = useState<string | null>(null);
   return (
     <Container>
       <LogoContainer>
@@ -14,12 +22,29 @@ export const Navigation = () => {
       <MenuContainer>
         <ul>
           <li>
-            <Link to="/cargos">Cargos</Link>
+            <Link
+              to="/cargos"
+              className={(activeMenuItem === "cargos" && "active") || ""}
+              onClick={() => setActiveMenuItem("cargos")}
+            >
+              <IconMenuItem>
+                <GiFamilyTree />
+              </IconMenuItem>
+              <IconMenuText>Cargos</IconMenuText>
+            </Link>
           </li>
           <li>
-            <Link to="/funcionarios">Funcionário</Link>
+            <Link
+              to="/funcionarios"
+              className={(activeMenuItem === "funcionarios" && "active") || ""}
+              onClick={() => setActiveMenuItem("funcionarios")}
+            >
+              <IconMenuItem>
+                <MdGroup />
+              </IconMenuItem>
+              <IconMenuText>Funcionário</IconMenuText>
+            </Link>
           </li>
-          <li>Funcionario</li>
         </ul>
       </MenuContainer>
     </Container>

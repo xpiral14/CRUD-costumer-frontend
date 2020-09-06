@@ -9,7 +9,8 @@ import { deleteCargo } from "../../store/cargo/actions";
 
 interface CargoPageProps extends RouteComponentProps<any>, React.Props<any> {}
 
-const CargosPage: React.FC<CargoPageProps> = (props) => {
+const CargosPage: React.FC<CargoPageProps> = () => {
+  
   const cargos = useSelector((s) => s.cargos);
   const dispatch = useDispatch();
 
@@ -31,7 +32,6 @@ const CargosPage: React.FC<CargoPageProps> = (props) => {
         <Table>
           <thead>
             <tr>
-              <th>Código</th>
               <th>Descrição</th>
               <th>Ações</th>
             </tr>
@@ -39,7 +39,6 @@ const CargosPage: React.FC<CargoPageProps> = (props) => {
           <tbody>
             {cargos.map((cargo) => (
               <tr key={cargo.id}>
-                <td>{cargo.id}</td>
                 <td>{cargo.descricao}</td>
                 <td>
                   <Link to={`/cargos/${cargo.id}`}>
