@@ -1,14 +1,13 @@
 import React from "react";
 import Routes from "./routes";
-import * as ReactRedux from "react-redux";
-import store from "./store";
 import GlobalStyle from "./styles/GlobalStyle";
+import { ToastProvider } from "./hooks/toast";
 function App() {
   return (
-    <ReactRedux.Provider store={store}>
-      <GlobalStyle />
-      <Routes />
-    </ReactRedux.Provider>
+      <ToastProvider>
+        <GlobalStyle />
+        <Routes />
+      </ToastProvider>
   );
 }
 
