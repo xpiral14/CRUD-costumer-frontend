@@ -143,7 +143,7 @@ Os passos para execução deste exige duas especificações:
     
 ### End Points
 - Cargos
- 
+ ```
     | VERBO HTTP   |   URL         |    Descrição          |
     |--------------:---------------:---------------------- |
     | GET          |   /cargos     |   Obtém cargos        |
@@ -151,9 +151,9 @@ Os passos para execução deste exige duas especificações:
     | POST         |   /cargos     |   Cadastra novo cargo |
     | PUT          |   /cargos/:id |   Atualiza cargo      |
     | DELETE       |   /cargos/:id |   Deleta cargo        |
-   
+  ```
 - Funcionários
-  
+  ```
     | VERBO HTTP   | URL                 | Descrição            |
     | -------------:---------------------:----------------------|
     | GET          | /funcionarios       | Obtém funcionarios   |
@@ -161,7 +161,7 @@ Os passos para execução deste exige duas especificações:
     | POST         | /funcionarios       | Cadastra funcionario |
     | PUT          | /funcionarios/:id   | Atualiza funcionario |
     | DELETE       | /funcionarios/:id   | Deleta funcionario   |
-
+```
 ___
 ## Frontend
 **É importante salientar que para o frontend funcionar bem, o servidor configurado no passo anterior deve estar rodando.**
