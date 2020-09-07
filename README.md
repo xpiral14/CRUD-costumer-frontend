@@ -143,23 +143,25 @@ Os passos para execução deste exige duas especificações:
     
 ### End Points
 - Cargos
-    ``` bash
-    VERBO HTTP      URL            Descrição
-    GET             /cargos        Obtém cargos
-    GET             /cargos/:id    Obtém cargo pelo id
-    POST            /cargos        Cadastra novo cargo
-    PUT             /cargos/:id    Atualiza cargo
-    DELETE          /cargos/:id    Deleta cargo
-    ```
+ 
+    VERBO HTTP   |   URL         |    Descrição
+    -------------:---------------:---------------------- |
+    GET          |   /cargos     |   Obtém cargos        |
+    GET          |   /cargos/:id |   Obtém cargo pelo id |
+    POST         |   /cargos     |   Cadastra novo cargo |
+    PUT          |   /cargos/:id |   Atualiza cargo      |
+    DELETE       |   /cargos/:id |   Deleta cargo        |
+   
 - Funcionários
-    ``` bash
-    VERBO HTTP  URL                Descrição
-    GET         /funcionarios      Obtém funcionarios
-    GET         /funcionarios/:id  Obtém funcionario 
-    POST        /funcionarios      Cadastra funcionario
-    PUT         /funcionarios/:id  Atualiza funcionario
-    DELETE      /funcionarios/:id  Deleta funcionario
-'   ```
+  
+    VERBO HTTP   | URL                 | Descrição
+    -------------:---------------------:----------------------|
+    GET          | /funcionarios       | Obtém funcionarios   |
+    GET          | /funcionarios/:id   | Obtém funcionario    |
+    POST         | /funcionarios       | Cadastra funcionario |
+    PUT          | /funcionarios/:id   | Atualiza funcionario |
+    DELETE       | /funcionarios/:id   | Deleta funcionario   |
+
 ___
 ## Frontend
 **É importante salientar que para o frontend funcionar bem, o servidor configurado no passo anterior deve estar rodando.**
